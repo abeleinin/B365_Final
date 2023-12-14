@@ -1,4 +1,4 @@
-read.csv("downloads/nfl_team_stats_2002-2022.csv")
+nfl <- read.csv("../data/nfl-games2002-2022.csv")
 
 nfl$date <- as.Date(nfl$date, format="%Y-%m-%d")
 
