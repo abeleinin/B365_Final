@@ -2,7 +2,7 @@
 
 # Import the data set
 
-NFLData = read.csv("nfl_team_stats_2002-2022.csv")
+NFLData = read.csv("../data/nfl_team_stats_2002-2022.csv")
 
 # Date variable becomes either regular or post season
 date = NFLData[,1]
