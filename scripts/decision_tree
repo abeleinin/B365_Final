@@ -1,5 +1,5 @@
 # Implement decision tree with one hold-out
-# ---------------------------- run the data cleaning script before running this one -------------------------------------
+# ---------------------------- run the cleanfordecisiontree script before running this one -------------------------------------
 # ---------------------------- clear existing global variables ---------------------------------------
 # Import the rpart library if needed
 if(!require('rpart')) {
