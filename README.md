@@ -1,5 +1,7 @@
 # B365 Final Project
 
+NFL data mining project implementing a decision tree, random forest, and elo rating system.
+
 ## Table of contents
 - [Decision Tree](#decision-tree)
 - [Random Forest](#random-forest)
@@ -8,11 +10,14 @@
 
 ## Decision Tree
 
-### Scripts
+### Code
 
 - [decision_tree.R](/scripts/decision_tree.R)
+  - Decision tree implementation
 - [cross_validation.R](/scripts/cross_validation.R) 
+  - Cross validation implementation
 - [clean_for_decision_tree.R](/scripts/clean_for_decision_tree.R)
+  - Cleaning script for decision tree
 
 ### Data
 
@@ -20,9 +25,10 @@
 
 ## Random Forest
 
-### Scripts 
+### Code
 
 - [random_forest.R](/scripts/random_forest.R) 
+  - Implements a random forest model
 
 ### Data
 
@@ -30,7 +36,7 @@
 
 ## Elo and Monte Carlo Simulation
 
-### Scripts 
+### Code
 
 - [elo_and_simulation.ipynb](/scripts/elo_and_simulation.ipynb)
   - Implements the Elo rating system for NFL team ranking
