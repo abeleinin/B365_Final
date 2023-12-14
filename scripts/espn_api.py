@@ -89,7 +89,7 @@ class NFLScraper:
     bye_week_data.to_csv('../data/nfl_byeweek_2023.csv', sep=',')
 
 if __name__ == '__main__':
-  # All the week in the 2023 NFL season
+  # All the weeks in the 2023 NFL season
   url = 'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/types/2/weeks'
 
   nfl = NFLScraper()
