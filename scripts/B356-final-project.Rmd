@@ -1,19 +1,61 @@
 ---
 title: "B365 Final Project"
-author: "Abe Leininger, Bryce Jobe, Alexis"
+author: "Abe Leininger, Bryce Jobe, Alexis Murphy"
 date: "2023-10-23"
 output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+```
+
+# Load data
+
+```{r}
+nfl_games <- read.csv("../data/nfl-games2002-2022.csv")
+nfl_teams <- read.csv("../data/nfl-team2010-2022.csv")
+```
+
+# NFL Games dataset from 2002 to 2022
+
+```{r}
+# Add Year column
+nfl_games <- nfl_games %>% mutate(year = as.integer(substring(date, 1, 4)))
 ```
 
 ```{r}
-nfl <- read.csv("nfl2002-2022.csv")
+subset(nfl_games, nfl_games$year == 2022)
 ```
 
 ```{r}
-nfl
+home_perform <- nfl %>%
+  group_by(team = home) %>%
+  summarize(
+    home_wins = sum(score_home > score_away),
+    home_losses = sum(score_home < score_away),
+    year = year
+  )
+
+away_perform <- nfl %>%
+  group_by(team = away) %>%
+  summarize(
+    away_wins = sum(score_home < score_away),
+    away_losses = sum(score_home > score_away),
+    year = year
+  )
+
+# performance <- bind_rows(home_perform, away_perform)
 ```
+
+# NFL Team dataset from 2010 to 2021
+
+```{r}
+names(nfl_teams)
+```
+
+```{r}
+subset(nfl_teams, nfl_teams$Year == 2021)
+```
+
 

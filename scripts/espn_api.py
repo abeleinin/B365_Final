@@ -1,13 +1,14 @@
 import pandas as pd
 import requests
 
-# api_url = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
-
-class NFLScrapper:
+class NFLScraper:
   def __init__(self):
     pass
 
   def get_data(self, url):
+    """
+    Given a url, return the json data
+    """
     response = requests.get(url)
     if response.status_code == 200:
         return response.json()
@@ -15,7 +16,10 @@ class NFLScrapper:
       raise RuntimeError('API call failed')
     
   def create_data(self, url):
-    
+    """
+    Given week 1 url, create a dataframe with all 
+    the match up information for the given season
+    """
     res = pd.DataFrame(columns={'home_team', 
                                 'away_team',
                                 'week',
@@ -42,8 +46,6 @@ class NFLScrapper:
           bye_week_data = bye_week_data.append(new_row, ignore_index=True)
       matchups_url = week_events['events']
       data = self.get_data(matchups_url['$ref'])
-
-      # TODO: Add bye week teams
       
       for item in data['items']:
         game = self.get_data(item['$ref'])
@@ -83,12 +85,13 @@ class NFLScrapper:
 
         res = res.append(new_row, ignore_index=True)
       
-    res.to_csv('../data/nfl_scrapped_2023.csv', sep=',')
+    res.to_csv('../data/nfl_scraped_2023.csv', sep=',')
     bye_week_data.to_csv('../data/nfl_byeweek_2023.csv', sep=',')
 
 if __name__ == '__main__':
+  # All the week in the 2023 NFL season
   url = 'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/types/2/weeks'
 
-  nfl = NFLScrapper()
+  nfl = NFLScraper()
 
   nfl.create_data(url)
